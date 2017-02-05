@@ -1,5 +1,7 @@
 package me.daniel.sales_taxes_problem;
 
+import java.math.BigDecimal;
+
 public class OrderItem {
 
 	private final Integer quantity;
@@ -16,6 +18,23 @@ public class OrderItem {
 
 	public Product getProduct() {
 		return product;
+	}
+	
+	public BigDecimal getTotalTax(SalesTaxStrategy taxStrategy){
+		BigDecimal qty = new BigDecimal(this.quantity);
+		BigDecimal tax = taxStrategy.calculate(this.product);
+		return qty.multiply(tax).setScale(2, BigDecimal.ROUND_HALF_UP);
+	}
+	
+	public BigDecimal getTotalNetPrice(){
+		BigDecimal qty = new BigDecimal(this.quantity);
+		return qty.multiply(this.product.getPrice()).setScale(2, BigDecimal.ROUND_HALF_UP);
+	}
+	
+	public BigDecimal getTotalPrice(SalesTaxStrategy taxStrategy){
+		BigDecimal totalNetPrice = this.getTotalNetPrice(); 
+		BigDecimal totalTax = this.getTotalTax(taxStrategy);
+		return totalNetPrice.add(totalTax).setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 	
 	@Override

@@ -2,46 +2,33 @@ package me.daniel.sales_taxes_problem;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class Cart {
 	
-	private SalesTaxStrategy salesTax;
-	private CartImportStrategy importer;
-	private Map<OrderItem, BigDecimal> items;
+	private SalesTaxStrategy taxStrategy;
+	private CartImportStrategy importStrategy;
+	private List<OrderItem> orderItems;
 	
 	public Cart(){
-		this.salesTax = new BaseSalesTax();
-		this.importer = new CartFileImporter();
-		this.items = new HashMap<OrderItem, BigDecimal>();
+		this.taxStrategy = new BaseSalesTax();
+		this.importStrategy = new CartFileImporter();
 	}
 	
 	public void importFromFile(String path) throws IOException{
-		this.importer.importCart(path).forEach((x)->{
-			items.put(x, this.salesTax.calculate(x.getProduct()));
-		});
+		this.orderItems = this.importStrategy.importCart(path);
 	}
 	
 	public BigDecimal getTotalTax(){		
-		return items.entrySet().stream()
-				.map((x)->{
-					BigDecimal qty = new BigDecimal(x.getKey().getQuantity());
-					BigDecimal tax = x.getValue();
-					return qty.multiply(tax);
-				})
+		return orderItems.stream()
+				.map((x)-> x.getTotalTax(taxStrategy))
 				.reduce(BigDecimal.ZERO, (sum, x) -> sum.add(x))
 				.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 	
 	public BigDecimal getTotal(){
-		return items.entrySet().stream()
-				.map((x)->{
-					BigDecimal qty = new BigDecimal(x.getKey().getQuantity());
-					BigDecimal price = x.getKey().getProduct().getPrice();
-					BigDecimal tax = x.getValue();
-					return qty.multiply(price.add(tax));
-				}) 
+		return orderItems.stream()
+				.map((x)-> x.getTotalPrice(taxStrategy)) 
 				.reduce(BigDecimal.ZERO, (sum, x) -> sum.add(x))
 				.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
