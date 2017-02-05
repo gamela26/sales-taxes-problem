@@ -32,4 +32,23 @@ public class Cart {
 				.reduce(BigDecimal.ZERO, (sum, x) -> sum.add(x))
 				.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
+	
+	@Override
+	public String toString(){
+		
+		StringBuilder str = new StringBuilder();
+		
+		orderItems.forEach((x)->{
+			str.append(x.getQuantity());
+			str.append(" " + x.getProduct().getName() + " at ");
+			str.append(x.getTotalPrice(taxStrategy));
+			str.append("\n");
+		});
+		str.append("Sales Taxes: ");
+		str.append(this.getTotalTax());
+		str.append("\nTotal: ");
+		str.append(this.getTotal());
+		
+		return str.toString();
+	}
 }

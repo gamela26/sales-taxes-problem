@@ -4,7 +4,7 @@
 
   <groupId>me.daniel</groupId>
   <artifactId>sales-taxes-problem</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>sales-taxes-problem</name>
@@ -16,6 +16,23 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>me.daniel.sales_taxes_problem.Main</mainClass>
+            </manifest>
+          </archive>
+          <outputDirectory>.</outputDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
