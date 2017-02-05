@@ -4,11 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,10 +30,10 @@ public class CartFileImporter implements CartImportStrategy {
 			
 			product = new Product(name, type, imported, price);
 			return new OrderItem(qty, product);
-	    	  
-	    }else{
-	    	return null;
-	    }
+	  
+		}else{
+			return null;
+		}
 	};
 	
 	
