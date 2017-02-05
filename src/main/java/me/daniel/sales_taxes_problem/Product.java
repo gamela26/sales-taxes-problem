@@ -44,22 +44,21 @@ public class Product {
 	}
 	
 	@Override
-    public boolean equals(Object o) {
-
-        if (o == this){
-        	return true;
-        }
-        
-        if (!(o instanceof Product)) {
-            return false;
-        }
-
-        Product product = (Product) o;
-
-        return this.name.equals(product.name) &&
-        	   this.type == product.type &&
-        	   this.imported.equals(product.imported) &&
-        	   this.price.equals(product.price);
-    }
-
+	public boolean equals(Object o) {
+	
+		if (o == this){
+			return true;
+		}
+		
+		if (!(o instanceof Product)) {
+		    return false;
+		}
+		
+		Product product = (Product) o;
+		
+		return this.name.equals(product.name) &&
+			   this.type == product.type &&
+			   this.imported.equals(product.imported) &&
+			   this.price.equals(product.price);
+	}
 }

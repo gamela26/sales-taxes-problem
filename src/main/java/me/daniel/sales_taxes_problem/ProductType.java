@@ -25,5 +25,4 @@ public enum ProductType {
 		}
 		return OTHER;
 	}
-	
 }

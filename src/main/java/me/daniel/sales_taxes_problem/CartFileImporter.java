@@ -35,8 +35,7 @@ public class CartFileImporter implements CartImportStrategy {
 			return null;
 		}
 	};
-	
-	
+		
 	@Override
 	public List<OrderItem> importCart(String path) throws IOException{
 		
@@ -44,6 +43,5 @@ public class CartFileImporter implements CartImportStrategy {
 				.map(createOrderItem)
 				.filter((p)-> p!=null)
 				.collect(Collectors.toList());			
-
 	}
 }

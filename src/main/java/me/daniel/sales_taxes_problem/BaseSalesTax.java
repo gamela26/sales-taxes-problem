@@ -31,5 +31,4 @@ public class BaseSalesTax implements SalesTaxStrategy {
 		BigDecimal div = tax.divide(ROUND_TO).setScale(0, RoundingMode.CEILING);		
 		return div.multiply(ROUND_TO).setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
-
 }

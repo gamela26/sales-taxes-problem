@@ -15,12 +15,12 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class FileImportTest {
+public class CartFileImportTest {
 	
 	private List<OrderItem> imported;
 	private List<OrderItem> expected;
 	
-	public FileImportTest(List<OrderItem> imported, List<OrderItem> expected){
+	public CartFileImportTest(List<OrderItem> imported, List<OrderItem> expected){
 		this.imported = imported;
 		this.expected = expected;
 	}
