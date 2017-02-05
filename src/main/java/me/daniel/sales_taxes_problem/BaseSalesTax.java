@@ -13,7 +13,7 @@ public class BaseSalesTax implements SalesTaxStrategy {
 	private final BigDecimal ROUND_TO = new BigDecimal(0.05);
 	
 	@Override
-	public BigDecimal apply(Product product) {
+	public BigDecimal calculate(Product product) {
 		BigDecimal tax = new BigDecimal(0);
 		
 		if(!EXLUDED.contains(product.getProductType())){

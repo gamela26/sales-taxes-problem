@@ -28,17 +28,17 @@ public class BaseSalesTaxTest {
 	@Parameters
 	public static Collection<Object[]> data () {
 		return Arrays.asList(new Object[][]	{
-			{new Product("p1",1, ProductType.BOOKS, false, new BigDecimal(12.49)), new BigDecimal(0)}, 
-			{new Product("p2",1, ProductType.OTHER, false, new BigDecimal(14.99)), new BigDecimal(1.5)}, 
-			{new Product("p3",1, ProductType.FOOD, false, new BigDecimal(0.85)), new BigDecimal(0)},
+			{new Product("p1",ProductType.BOOKS, false, new BigDecimal(12.49)), new BigDecimal(0)}, 
+			{new Product("p2",ProductType.OTHER, false, new BigDecimal(14.99)), new BigDecimal(1.5)}, 
+			{new Product("p3",ProductType.FOOD, false, new BigDecimal(0.85)), new BigDecimal(0)},
 			
-			{new Product("p4",1, ProductType.FOOD, true, new BigDecimal(10.00)), new BigDecimal(0.50)}, 
-			{new Product("p5",1, ProductType.OTHER, true, new BigDecimal(47.50)), new BigDecimal(7.15)},
+			{new Product("p4",ProductType.FOOD, true, new BigDecimal(10.00)), new BigDecimal(0.50)}, 
+			{new Product("p5",ProductType.OTHER, true, new BigDecimal(47.50)), new BigDecimal(7.15)},
 			
-			{new Product("p6",1, ProductType.OTHER,	true, new BigDecimal(27.99)), new BigDecimal(4.20)},
-			{new Product("p7",1, ProductType.OTHER, false, new BigDecimal(18.99)), new BigDecimal(1.90)}, 
-			{new Product("p8",1, ProductType.MEDICAL, false, new BigDecimal(9.75)), new BigDecimal(0)},
-			{new Product("p9",1, ProductType.FOOD, true, new BigDecimal(11.25)), new BigDecimal(0.60)}
+			{new Product("p6",ProductType.OTHER,	true, new BigDecimal(27.99)), new BigDecimal(4.20)},
+			{new Product("p7",ProductType.OTHER, false, new BigDecimal(18.99)), new BigDecimal(1.90)}, 
+			{new Product("p8",ProductType.MEDICAL, false, new BigDecimal(9.75)), new BigDecimal(0)},
+			{new Product("p9",ProductType.FOOD, true, new BigDecimal(11.25)), new BigDecimal(0.60)}
 		});
 	}	
 		
@@ -49,7 +49,7 @@ public class BaseSalesTaxTest {
 
 	@Test
 	public void test() {
-		BigDecimal tax = salesTax.apply(product);
+		BigDecimal tax = salesTax.calculate(product);
 		expected = 	expected.setScale(2, BigDecimal.ROUND_HALF_UP);
 		assertEquals(expected, tax);
 	}
