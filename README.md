@@ -1,7 +1,4 @@
 # Sales taxes problem
-This problem requires some kind of input. You are free to implement any mechanism for feeding input into your solution (for example, using hard coded data within a unit test). You should provide sufficient evidence that your solution is complete by, as a minimum, indicating that it works correctly against the supplied test data.
-
-## PROBLEM: SALES TAXES
 
 **Basic sales tax** is applicable at a rate of **10%** on all goods, **except** books, food, and medical products that are exempt. **Import duty** is an additional sales tax applicable on all imported goods at a rate of 5%, with no exemptions.
 
@@ -51,12 +48,35 @@ Sales Taxes: 6.70
 Total: 74.68
 ```
 
-## General requirements
-- You may use whatever programming language/platform you prefer. Use something that you know well.
-- You must release your work with an OSI-approved open source license of your choice.
-- You must deliver the sources of your application, with a README that explains how to compile and run it.
-- Add the code to your own Github account and send us the link.
+## Requirements
 
-**IMPORTANT:**  Implement the requirements focusing on **writing the best code** you can produce.
+- Java8
+- Maven
+
+## How to setup
+
+1. Download the source code:
+
+		$ git clone https://github.com/gamela26/sales-taxes-problem.git
+
+2. Change directory to `sales-taxes-problem` and build the project:
+
+		$ cd sales-taxes-problem
+		$ mvn clean install
+
+3. Launch the application:
+
+		$ java -jar sales-taxes-problem.jar files/cart1.txt files/cart2.txt files/cart3.txt
+
+## How to run tests
+
+From the setup `folder` of this project run:
+    
+	$ mvn test
+
+## License
+
+Sales taxes problem is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+
 
 
