@@ -28,6 +28,7 @@
             </manifest>
           </archive>
           <outputDirectory>.</outputDirectory>
+          <finalName>${project.artifactId}</finalName>
         </configuration>
       </plugin>
     </plugins>
