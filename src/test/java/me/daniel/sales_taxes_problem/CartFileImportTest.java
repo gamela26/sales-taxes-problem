@@ -48,7 +48,8 @@ public class CartFileImportTest {
 		return Arrays.asList(new Object[][]	{
 			{importStrategy.importCart("files/cart1.txt"), cart1 },
 			{importStrategy.importCart("files/cart2.txt"), cart2 },
-			{importStrategy.importCart("files/cart3.txt"), cart3 }
+			{importStrategy.importCart("files/cart3.txt"), cart3 },
+			{importStrategy.importCart("files/cart3-bad.txt"), cart3 }
 		});
 	}	
 	
